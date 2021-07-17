@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Layout from '../../components/Layout/Layout';
 import styles from './Country.module.css';
 
@@ -33,7 +32,7 @@ const Country = ({ country }) => {
             <div className={styles.container}>
                 <div className={styles.container_left}>
                     <div className={styles.overview_panel}>
-                        <Image src={country.flag} alt={country.name}></Image>
+                        <img src={country.flag} alt={country.name} />
 
                         <h1 className={styles.overview_name}>{country.name}</h1>
                         <div className={styles.overview_region}>{country.region}</div>
@@ -85,7 +84,7 @@ const Country = ({ country }) => {
 
                         <div className={styles.details_panel_row}>
                             <div className={styles.details_panel_label}>Gini</div>
-                            <div className={styles.details_panel_value}>{country.gini} %</div>
+                            <div className={styles.details_panel_value}>{country.gini ? country.gini : '0'}%</div>
                         </div>
 
                         <div className={styles.details_panel_borders}>
@@ -94,7 +93,7 @@ const Country = ({ country }) => {
                             <div className={styles.details_panel_borders_container}>
                                 {borders.map(({ flag, name }) => (
                                     <div className={styles.details_panel_borders_country} key={country.name}>
-                                        <Image src={flag} alt={name} />
+                                        <img src={flag} alt={name} />
                                         <div className={styles.details_panel_borders_name}>{name}</div>
                                     </div>
                                 ))}
