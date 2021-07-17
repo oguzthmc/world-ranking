@@ -62,7 +62,6 @@ const CountriesTable = ({ countries }) => {
                 <div className={styles.heading_flag}></div>
 
                 <button
-                    key="1"
                     className={styles.heading_name}
                     onClick={() => setValueAndDirection('name')}
                 >
@@ -71,7 +70,6 @@ const CountriesTable = ({ countries }) => {
                 </button>
 
                 <button
-                    key="2"
                     className={styles.heading_population}
                     onClick={() => setValueAndDirection('population')}
                 >
@@ -80,7 +78,6 @@ const CountriesTable = ({ countries }) => {
                 </button>
 
                 <button
-                    key="3"
                     className={styles.heading_area}
                     onClick={() => setValueAndDirection('area')}
                 >
@@ -89,7 +86,6 @@ const CountriesTable = ({ countries }) => {
                 </button>
 
                 <button
-                    key="4"
                     className={styles.heading_gini}
                     onClick={() => setValueAndDirection('gini')}
                 >
@@ -99,7 +95,7 @@ const CountriesTable = ({ countries }) => {
             </div>
 
             {orderedCountries.map((country) => (
-                <Link href={`/country/${country.alpha3Code}`}>
+                <Link href={`/country/${country.alpha3Code}`} key={country.name}>
                     <div className={styles.row}>
                         <div className={styles.flag}>
                             <img src={country.flag} alt={country.name} />
