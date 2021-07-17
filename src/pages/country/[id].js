@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Layout from '../../components/Layout/Layout';
 import styles from './Country.module.css';
 
@@ -17,7 +18,7 @@ const Country = ({ country }) => {
 
     const getBorders = async () => {
         const borders = await Promise.all(
-            country.borders.map(border => getCountry(border))
+            country.borders.map((border) => getCountry(border))
         );
 
         setBorders(borders);
@@ -27,14 +28,12 @@ const Country = ({ country }) => {
         getBorders();
     }, []);
 
-    console.log(borders);
-
     return (
         <Layout title={country.name}>
             <div className={styles.container}>
                 <div className={styles.container_left}>
                     <div className={styles.overview_panel}>
-                        <img src={country.flag} alt={country.name}></img>
+                        <Image src={country.flag} alt={country.name}></Image>
 
                         <h1 className={styles.overview_name}>{country.name}</h1>
                         <div className={styles.overview_region}>{country.region}</div>
@@ -94,8 +93,8 @@ const Country = ({ country }) => {
 
                             <div className={styles.details_panel_borders_container}>
                                 {borders.map(({ flag, name }) => (
-                                    <div className={styles.details_panel_borders_country}>
-                                        <img src={flag} alt={name}></img>
+                                    <div className={styles.details_panel_borders_country} key={country.name}>
+                                        <Image src={flag} alt={name} />
                                         <div className={styles.details_panel_borders_name}>{name}</div>
                                     </div>
                                 ))}
